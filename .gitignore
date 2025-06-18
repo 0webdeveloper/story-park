@@ -1,0 +1,36 @@
+# Системные файлы macOS
+.DS_Store
+
+# Системные файлы Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node.js зависимости (если используете npm/yarn для tailwind)
+node_modules/
+
+# Сборочные и временные файлы
+dist/
+build/
+*.log
+
+# Файлы редакторов и IDE
+.vscode/
+.idea/
+
+# Файлы окружения
+.env
+.env.*
+
+# Кэш и временные файлы
+*.tmp
+*.temp
+
+# Tailwind CSS output (если генерируется отдельный файл)
+tailwind.css
+tailwind.output.css
+
+# Прочие служебные файлы
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
