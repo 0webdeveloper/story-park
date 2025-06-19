@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Park - Ключ к новой истории</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Geologica', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #FEE4B3 0%, #FDB36B 50%, #F97316 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="px-4 py-4 lg:px-8 bg-white">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-orange-500 rounded-full"></div>
+                <span class="text-xl font-bold text-gray-900">Story Park</span>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-sm">
+                <a href="#" class="text-gray-700 hover:text-gray-900">Районы</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">Жилые комплексы</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">Галерея</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">Контакты</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">Промоматериалы</a>
+            </div>
+            <div class="text-sm text-gray-600">
+                +7 917 123 45 67
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient px-4 py-16 lg:py-24 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                    Ключ к новой<br>истории
+                </h1>
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed max-w-lg">
+                    Новый жилой район-городок для тех кто верит в светлые перспективы. Здесь всегда случаются счастливые истории, поэтому стоит начать создавать новые.
+                </p>
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Смотреть планировки
+                </button>
+            </div>
+            <div class="relative">
+                <div class="bg-white rounded-3xl p-6 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop" 
+                         alt="Счастливая пара с ключами" 
+                         class="rounded-2xl w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Townhouses Section -->
+    <section class="px-4 py-16 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- Left: Townhouse Image -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden h-96">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" 
+                             alt="Таунхаусы" 
+                             class="absolute inset-0 w-full h-full object-cover opacity-70 rounded-3xl">
+                        <div class="relative z-10 flex flex-col justify-end h-full">
+                            <h2 class="text-4xl font-bold mb-6">Таунхаусы</h2>
+                            <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-medium transition-colors w-fit">
+                                Смотреть планировки
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Features Grid -->
+                <div class="grid grid-cols-2 gap-6">
+                    <!-- Feature Cards -->
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto">
+                            <div class="w-8 h-8 bg-orange-500 rounded-lg"></div>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm">Благоустроенная<br>территория</h3>
+                        <p class="text-xs text-gray-600">Для отдыха</p>
+                    </div>
+
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto">
+                            <div class="w-8 h-8 bg-orange-500 rounded-lg"></div>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm">Продуманная<br>планировка</h3>
+                        <p class="text-xs text-gray-600">Современные решения</p>
+                    </div>
+
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto">
+                            <div class="w-8 h-8 bg-orange-500 rounded-lg"></div>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm">Прекрасные<br>виды</h3>
+                        <p class="text-xs text-gray-600">На природу</p>
+                    </div>
+
+                    <div class="text-center space-y-4">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto">
+                            <div class="w-8 h-8 bg-orange-500 rounded-lg"></div>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm">Экологически<br>чистый район</h3>
+                        <p class="text-xs text-gray-600">Чистый воздух</p>
+                    </div>
+
+                    <div class="col-span-2 text-center space-y-4">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto">
+                            <div class="w-8 h-8 bg-orange-500 rounded-lg"></div>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 text-sm">Большие окна и панорамные<br>виды из каждой комнаты</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section -->
+    <section class="px-4 py-16 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-5xl font-bold text-gray-900 mb-2">Инфраструктура</h2>
+            <h3 class="text-3xl text-gray-700 mb-8">для жизни</h3>
+            <p class="text-gray-600 mb-16 max-w-4xl mx-auto text-lg leading-relaxed">
+                В Story Park предусмотрено всё для комфортной жизни каждого жителя, работы, отдыха, оздоровления, спорта и торговли. Здесь есть всё что необходимо для активного образа жизни с детьми для активного отдыха, развития и воспитания.
+            </p>
+            
+            <!-- Infrastructure Image -->
+            <div class="mb-16">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop" 
+                     alt="Инфраструктура района" 
+                     class="w-full h-[500px] object-cover rounded-3xl shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="px-4 py-16 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Service Card 1 - Education -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden card-hover min-h-[300px]">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" 
+                     alt="Образование и развитие" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-60 rounded-3xl">
+                <div class="relative z-10 flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold mb-2">Образование<br>и развитие</h3>
+                    <p class="text-sm text-gray-200">Школы, детские сады и центры развития</p>
+                </div>
+            </div>
+
+            <!-- Service Card 2 - Health -->
+            <div class="bg-gradient-to-br from-orange-200 to-orange-300 rounded-3xl p-8 relative overflow-hidden card-hover min-h-[300px]">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop" 
+                     alt="Здоровье и спорт" 
+                     class="absolute top-4 right-4 w-20 h-20 object-cover rounded-full">
+                <div class="relative z-10 flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Здоровье<br>и спорт</h3>
+                    <p class="text-sm text-gray-700">Медицинские центры и спортивные комплексы</p>
+                </div>
+            </div>
+
+            <!-- Service Card 3 - Shopping -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden card-hover min-h-[300px]">
+                <div class="relative z-10 flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold mb-2">Магазины, кафе<br>и досуг</h3>
+                    <p class="text-sm text-gray-200">Торговые центры и рестораны</p>
+                </div>
+            </div>
+
+            <!-- Service Card 4 - Work -->
+            <div class="bg-gradient-to-br from-orange-200 to-orange-300 rounded-3xl p-8 card-hover min-h-[300px]">
+                <div class="flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Работа из дома<br>становится</h3>
+                    <p class="text-sm text-gray-700">Коворкинг-пространства</p>
+                </div>
+            </div>
+
+            <!-- Service Card 5 - Green Spaces -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden card-hover min-h-[300px]">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop" 
+                     alt="Зеленые пространства" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-60 rounded-3xl">
+                <div class="relative z-10 flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold mb-2">Зеленые<br>пространства<br>внутри района</h3>
+                </div>
+            </div>
+
+            <!-- Service Card 6 - Space -->
+            <div class="bg-gradient-to-br from-orange-200 to-orange-300 rounded-3xl p-8 card-hover min-h-[300px]">
+                <div class="flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Больше света,<br>воздуха<br>и пространства</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nature Section -->
+    <section class="px-4 py-16 lg:px-8 bg-green-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-5xl font-bold text-gray-900 mb-8 leading-tight">Город<br>в природе</h2>
+                    <p class="text-gray-700 mb-10 text-lg leading-relaxed">
+                        Представьте Ваш дом среди зелени парка. Утром Вы просыпаетесь от пения птиц, а вечером засыпаете под шум листвы.
+                    </p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-sm font-medium transition-colors">
+                        Смотреть планировки
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Nature Cards -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-6 text-white relative overflow-hidden card-hover">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop" 
+                             alt="Зеленые насаждения" 
+                             class="absolute inset-0 w-full h-full object-cover opacity-60 rounded-3xl">
+                        <div class="relative z-10 flex items-end h-32">
+                            <h3 class="text-sm font-bold">Зеленые<br>пространства<br>внутри района</h3>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-orange-200 to-orange-300 rounded-3xl p-6 card-hover">
+                        <div class="flex items-end h-32">
+                            <h3 class="text-sm font-bold text-gray-900">Больше света,<br>воздуха<br>и пространства</h3>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-orange-200 to-orange-300 rounded-3xl p-6 card-hover">
+                        <div class="flex items-end h-32">
+                            <h3 class="text-sm font-bold text-gray-900">Близость к<br>природным<br>заповедникам</h3>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-6 text-white card-hover">
+                        <div class="flex items-end h-32">
+                            <h3 class="text-sm font-bold">Близость к<br>природным<br>заповедникам<br>"Сунчак"</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comfort Section -->
+    <section class="px-4 py-16 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-5xl font-bold text-gray-900 mb-2">Комфортная среда</h2>
+            <h3 class="text-3xl text-gray-700">на каждый день</h3>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Comfort Card 1 -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden card-hover min-h-[350px]">
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" 
+                     alt="Парк и отдых" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-60 rounded-3xl">
+                <div class="relative z-10 flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold mb-2">Парк и отдых<br>в 3 минутах</h3>
+                    <p class="text-sm text-gray-200">Прогулочные зоны и места для активного отдыха</p>
+                </div>
+            </div>
+
+            <!-- Comfort Card 2 -->
+            <div class="bg-gradient-to-br from-orange-200 to-orange-300 rounded-3xl p-8 card-hover min-h-[350px]">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop" 
+                     alt="Спорт и активности" 
+                     class="w-full h-40 object-cover rounded-2xl mb-6">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Спорт для детей<br>и взрослых</h3>
+                    <p class="text-sm text-gray-700">Спортивные площадки и залы</p>
+                </div>
+            </div>
+
+            <!-- Comfort Card 3 -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden card-hover min-h-[350px]">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop" 
+                     alt="Чистота и порядок" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-60 rounded-3xl">
+                <div class="relative z-10 flex flex-col justify-end h-full">
+                    <h3 class="text-xl font-bold mb-2">Чистота, порядок<br>и контроль доступа</h3>
+                    <p class="text-sm text-gray-200">Безопасная территория 24/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Section -->
+    <section class="px-4 py-16 lg:px-8 bg-gradient-to-br from-blue-900 to-blue-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white">
+                <h2 class="text-5xl font-bold mb-8 leading-tight">Надёжный<br>застройщик</h2>
+                <p class="text-blue-100 mb-6 text-lg">
+                    Наша компания успешно реализовала свыше 15 жилых комплексов общей площадью более 500 000 кв. м.
+                </p>
+                <p class="text-blue-100 mb-6 text-lg">
+                    Мы используем только проверенные материалы и работаем с лучшими подрядчиками.
+                </p>
+                <p class="text-blue-100 mb-10 text-lg">
+                    Все наши объекты сдаются в срок с полным комплексом документов и инфраструктурой.
+                </p>
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-sm font-medium transition-colors">
+                    Смотреть проекты
+                </button>
+            </div>
+            <div class="flex justify-center">
+                <div class="w-40 h-40 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 L90 90 L10 90 Z" fill="#1E40AF" stroke="#1E40AF" stroke-width="2"/>
+                        <circle cx="50" cy="35" r="8" fill="white"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Housing Types -->
+    <section class="px-4 py-16 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-5xl font-bold text-gray-900 mb-4">Форматы жилья</h2>
+            <p class="text-gray-600 text-lg max-w-4xl mx-auto">
+                Для каждого найдется четыре, что подходит именно вам, в котором истории ваших поколений продолжатся.
+            </p>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Housing Type 1 -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl card-hover">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&h=250&fit=crop" 
+                     alt="Таунхаусы" 
+                     class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Таунхаусы</h3>
+                    <p class="text-gray-600 text-sm mb-4">Современные двухэтажные дома с придомовой территорией</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium transition-colors">
+                        Смотреть планировки
+                    </button>
+                </div>
+            </div>
+
+            <!-- Housing Type 2 -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl card-hover">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=300&h=250&fit=crop" 
+                     alt="Малоэтажные дома" 
+                     class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Малоэтажные<br>дома</h3>
+                    <p class="text-gray-600 text-sm mb-4">Комфортабельные квартиры в малоэтажных домах</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium transition-colors">
+                        Смотреть планировки
+                    </button>
+                </div>
+            </div>
+
+            <!-- Housing Type 3 -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl card-hover">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=300&h=250&fit=crop" 
+                     alt="Апартаменты" 
+                     class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Апартаменты<br>премиум-класса</h3>
+                    <p class="text-gray-600 text-sm mb-4">Роскошные апартаменты с панорамными окнами</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium transition-colors">
+                        Смотреть планировки
+                    </button>
+                </div>
+            </div>
+
+            <!-- Housing Type 4 -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl card-hover">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=300&h=250&fit=crop" 
+                     alt="Пентхаусы" 
+                     class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Многоуровневые<br>пентхаусы</h3>
+                    <p class="text-gray-600 text-sm mb-4">Эксклюзивные пентхаусы с террасами</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium transition-colors">
+                        Смотреть планировки
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Card hover animations
+        const cards = document.querySelectorAll('.card-hover');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-gradient');
+            const speed = scrolled * 0.5;
+            if (parallax) {
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

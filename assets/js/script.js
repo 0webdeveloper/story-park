@@ -33,16 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Header background change on scroll
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('bg-white', 'shadow-md');
-            header.classList.remove('bg-transparent');
-        } else {
-            header.classList.add('bg-transparent');
-            header.classList.remove('bg-white', 'shadow-md');
-        }
-    });
+    // const header = document.querySelector('header');
+    // window.addEventListener('scroll', function() {
+    //     if (window.scrollY > 100) {
+    //         header.classList.add('bg-white', 'shadow-md');
+    //         header.classList.remove('bg-transparent');
+    //     } else {
+    //         header.classList.add('bg-transparent');
+    //         header.classList.remove('bg-white', 'shadow-md');
+    //     }
+    // });
 
     // Intersection Observer for animations
     const observerOptions = {
@@ -125,15 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('#home');
-        const speed = scrolled * 0.5;
+    // window.addEventListener('scroll', function() {
+    //     const scrolled = window.pageYOffset;
+    //     const parallax = document.querySelector('#home');
+    //     const speed = scrolled * 0.5;
         
-        if (parallax) {
-            parallax.style.transform = `translateY(${speed}px)`;
-        }
-    });
+    //     if (parallax) {
+    //         parallax.style.transform = `translateY(${speed}px)`;
+    //     }
+    // });
 
     // Load apartments data (placeholder for dynamic content)
     const apartmentsData = [
@@ -241,3 +241,21 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+
+ymaps.ready(init);
+function init () {
+    var myMap = new ymaps.Map("map", {
+        center: [55.76, 37.64],
+        zoom: 10
+    });
+    myMap.behaviors.disable('scrollZoom');
+    var myPlacemark = new ymaps.Placemark(myMap.getCenter(),{
+        balloonContent: "Здесь какой-то текст для балуна",
+        hintContent:'Здесь какой-то текст для хинта'
+    });
+    var myPlacemark2 = new ymaps.Placemark([55.77722100860132,37.71822337109375]);
+    myMap.geoObjects.add(myPlacemark);
+    myMap.geoObjects.add(myPlacemark2);
+}

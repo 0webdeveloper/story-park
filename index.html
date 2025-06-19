@@ -6,38 +6,51 @@
     <title>Story Park - Жилой комплекс</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'peach': '#F5D5AE',
-                        'sage': '#8FA68E',
-                        'navy': '#2C3E50',
-                        'warm-gray': '#F8F6F3',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- <link rel="stylesheet" type="text/tailwindcss" href="./assets/css/style.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    
+    <style type="text/tailwindcss">
+      @theme {
+        --color-main: #F7F7F7;
+        --color-peach : #FFD7C3;
+        --color-peach-btn: #FFB284;
+        --color-sage : #8FA68E;
+        --color-navy : #233232;
+        --color-warm-gray : #F8F6F3;
+        --font-geologica: 'Geologica', sans-serif;
+        --color-clifford: #da373d;
+        --radius-36: 2.25rem;
+      }
+
+      .active {
+        background: var(--color-peach);
+      }
+    </style>
 </head>
-<body class="font-inter bg-white">
-    <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-navy">Story Park</div>
+<body class="font-geologica bg-main text-navy leading-none">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <header class="bg-white shadow-sm rounded-4xl">
+        <nav class="flex items-center p-6 md:p-8">
+            <a href="/" class="text-2xl font-bold flex items-center gap-2 mr-12">
+                <img src="assets/img/logo.svg" alt="Story Park">
+                Story Park
+            </a>
             <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-700 hover:text-navy transition-colors">Главная</a>
-                <a href="#about" class="text-gray-700 hover:text-navy transition-colors">О проекте</a>
-                <a href="#infrastructure" class="text-gray-700 hover:text-navy transition-colors">Инфраструктура</a>
-                <a href="#apartments" class="text-gray-700 hover:text-navy transition-colors">Квартиры</a>
-                <a href="#contact" class="text-gray-700 hover:text-navy transition-colors">Контакты</a>
+                <a href="#home" class="text-gray-700 hover transition-colors">Жилой район</a>
+                <a href="#about" class="text-gray-700 hover transition-colors">Форматы жилья</a>
+                <a href="#infrastructure" class="text-gray-700 hover transition-colors">Ипотека</a>
+                <a href="#apartments" class="text-gray-700 hover transition-colors">График стройки</a>
+                <a href="#contact" class="text-gray-700 hover transition-colors">О застройщике </a>
             </div>
+            <address class="hidden md:flex text-sm text-gray-700 ml-auto not-italic gap-4">
+                <span>г. Липецк, Лебедянское шоссе</span>
+                <a href="tel:+74742516393" class="font-semibold">+7 4742 51-63-93</a>
+            </address>
             <button class="md:hidden" id="mobile-menu-toggle">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -46,206 +59,507 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-20 bg-gradient-to-br from-peach via-warm-gray to-white min-h-screen flex items-center">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h1 class="text-5xl md:text-6xl font-bold text-navy leading-tight">
-                        Ключ к новой<br>
-                        <span class="text-sage">истории</span>
-                    </h1>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Современный жилой комплекс с продуманной инфраструктурой для комфортной жизни в городе.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-sage text-white px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105">
+    <div id="home" class="bg-peach rounded-4xl my-6 max-h-[700px]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="space-y-6 p-6 md:p-12 flex flex-col">
+                <h1 class="text-5xl md:text-6xl leading-none">
+                    Ключ к новой<br> истории
+                </h1>
+                <p class="text-2xl">
+                    Новый жилой район города, где природа и архитектура создают пространство для жизни, вдохновения и будущего
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                    <button class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+                        Выбрать квартиру
+                    </button>
+                </div>
+            </div>
+            <div class="ml-auto hidden md:block">
+                <img class="w-full object-cover max-h-[700px]" src="assets/img/Park-1.webp" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 flex">
+            <div class="relative rounded-3xl overflow-hidden w-full flex flex-col p-12 bg-[url('../../assets/img/Park-4.webp')] bg-cover bg-no-repeat">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="flex gap-4">
+                      <div class="bg-white rounded-full px-4 py-2 flex items-center gap-2 shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M3.375 12.375C2.25 13.32 1.875 16.125 1.875 16.125C1.875 16.125 4.68 15.75 5.625 14.625C6.1575 13.995 6.15 13.0275 5.5575 12.4425C5.26598 12.1643 4.88197 12.0035 4.47917 11.991C4.07637 11.9786 3.68316 12.1153 3.375 12.375Z" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 11.2499L6.75 8.99994C7.14911 7.96451 7.65165 6.97199 8.25 6.03744C9.12389 4.64018 10.3407 3.48973 11.7848 2.69551C13.2288 1.90129 14.852 1.48972 16.5 1.49994C16.5 3.53994 15.915 7.12494 12 9.74994C11.0527 10.349 10.0476 10.8515 9 11.2499Z" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.75 9.00001H3C3 9.00001 3.4125 6.72751 4.5 6.00001C5.715 5.19001 8.25 6.00001 8.25 6.00001" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 11.25V15C9 15 11.2725 14.5875 12 13.5C12.81 12.285 12 9.75 12 9.75" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        <span class="text-xs font-semibold text-gray-700">СТАРТ ПРОДАЖ</span>
+                      </div>
+                      <div class="bg-white rounded-full px-4 py-2 flex items-center gap-2 shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <g clip-path="url(#clip0_74_403)">
+                              <path d="M1.5 13.5V15.75C1.5 16.2 1.8 16.5 2.25 16.5H5.25V14.25H7.5V12H9L10.05 10.95C11.0924 11.3131 12.2271 11.3117 13.2686 10.9461C14.3101 10.5804 15.1967 9.87213 15.7833 8.93709C16.3699 8.00206 16.6218 6.89563 16.4978 5.7988C16.3739 4.70198 15.8813 3.67969 15.1008 2.89918C14.3203 2.11866 13.298 1.62614 12.2012 1.50217C11.1044 1.37819 9.99794 1.63012 9.06291 2.21673C8.12787 2.80334 7.41959 3.6899 7.05394 4.73139C6.68828 5.77287 6.68689 6.90762 7.05 7.95L1.5 13.5Z" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M12.375 6C12.5821 6 12.75 5.83211 12.75 5.625C12.75 5.41789 12.5821 5.25 12.375 5.25C12.1679 5.25 12 5.41789 12 5.625C12 5.83211 12.1679 6 12.375 6Z" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_74_403">
+                                <rect width="18" height="18" fill="white"/>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        <span class="text-xs font-semibold text-gray-700">IV-2026</span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-start mt-8 h-full">
+                      <h1 class="text-white text-4xl md:text-5xl mb-4">Таунхаусы</h1>
+                      <p class="text-white mb-8 text-base">Идеальный выбор для тех, кто ценит приватность,<br> но хочет остаться в черте города</p>
+                        <button class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
                             Выбрать квартиру
                         </button>
-                        <button class="border-2 border-sage text-sage px-8 py-4 rounded-lg font-semibold hover:bg-sage hover:text-white transition-all">
-                            Записаться на просмотр
-                        </button>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="bg-gradient-to-r from-sage to-peach p-8 rounded-2xl shadow-2xl">
-                        <img src="/api/placeholder/500/400" alt="Жилой комплекс" class="w-full h-80 object-cover rounded-lg">
-                    </div>
+              </div>
+              
+        </div>
+        <div class="flex-1 flex">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 text-lg w-full">
+                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Индивидуальный<br>вход</span>
+                    <img class="mt-auto" src="assets/img/rocket.svg" alt="">
+                </div>
+                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Придомовая<br>территория</span>
+                    <img class="mt-auto" src="assets/img/trees.svg" alt="">
+                </div><div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Свободная<br>парковка</span>
+                    <img class="mt-auto" src="assets/img/car.svg" alt="">
+                </div>
+                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Два этажа</span>
+                    <img class="mt-auto" src="assets/img/home.svg" alt="">
+                </div>
+                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Высокие<br>потолки</span>
+                    <img class="mt-auto" src="assets/img/arrow-up-square.svg" alt="">
+                </div>
+                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Большие окна<br>в пол</span>
+                    <img class="mt-auto" src="assets/img/kanban-square.svg" alt="">
+                </div>
+
+
+                <div class="col-span-3 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Просторная<br>кухня-гостиная</span>
+                    <img class="mt-auto" src="assets/img/lamp-ceiling.svg" alt="">
+                </div>
+                <div class="col-span-3 bg-peach bg-[url(../../assets/img/Vector.svg)] bg-no-repeat bg-bottom-right rounded-3xl p-4 flex flex-col items-start space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>Каталог планировок<br>с характеристиками</span>
+                    <a class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto" href="">Скачать</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-navy mb-4">О проекте</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Story Park — это не просто жилой комплекс, это целый мир возможностей для вашей семьи.
+    </div>
+
+    <div class="py-20">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl mb-4">Инфраструктура<br>для жизни</h2>
+            <p class="text-lg max-w-5xl mx-auto">
+                В Story Park предусмотрено всё для повседневной жизни: школа, детский сад, поликлиника, спорт и торговля.<br>Это не просто жилые дома, а среда, где удобно жить, работать, учиться и отдыхать.
+            </p>
+        </div>
+        
+        <div class="p-6 md:p-12 relative min-h-[700px] rounded-4xl overflow-hidden">
+            <ul class="relative z-10 bg-white rounded-4xl p-1 inline-flex items-center gap-2">
+                <li><button class="active uppercase text-sm cursor-pointer py-2 px-4 rounded-3xl block" type="button">Проект</button></li>
+                <li><button  class="uppercase text-sm cursor-pointer py-2 px-4 rounded-3xl block"type="button">Действующая</button></li>
+            </ul>
+            <div class="absolute inset-0">
+                <img class="w-full" src="assets/img/map.webp" alt="">
+            </div>
+        </div>
+    </div>
+        
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <div class="relative h-full max-h-[400px] bg-[url('../../assets/img/Park-17.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+            <div class="flex flex-col h-full relative z-10">
+                <h3 class="text-3xl mb-2">Образование<br>и развитие</h3>
+                <p class="mt-auto text-base">Строительство школы и детского сада начнётся в январе 2026 года.<br>
+    Обучение, развитие и внеурочные занятия — в шаговой доступности от дома.</p>
+            </div>
+        </div>
+        
+        <div class="h-full max-h-[400px] overflow-hidden flex rounded-3xl shadow-lg hover:shadow-xl transition-all">
+            <div class="flex flex-col p-6">
+                <h3 class="text-3xl mb-2">Здоровье<br>и спорт</h3>
+                <p class="mt-auto text-sm text-gray-600">В районе появятся поликлиника и спортивный комплекс. Всё, чтобы заботиться о здоровье и быть активным — рядом с домом.</p>
+            </div>
+            <div>
+                <img class="w-full" src="assets/img/Park-13.webp" alt="">
+            </div>
+        </div>
+        
+        <div class="h-full max-h-[400px] overflow-hidden flex rounded-3xl shadow-lg hover:shadow-xl transition-all">
+            <div class="flex flex-col p-6">
+                <h3 class="text-3xl mb-2">Магазины, кафе<br>и досуг</h3>
+                <p class="mt-auto text-sm text-gray-600">В районе появятся торговый и культурно-досуговый центры, а также предприятия общественного питания. Всё, что нужно для повседневных дел и встреч — в пределах района.</p>
+            </div>
+            <div>
+                <img class="w-full" src="assets/img/Park-16.webp" alt="">
+            </div>
+        </div>
+
+        <div class="relative h-full max-h-[400px] bg-[url('../../assets/img/Park-35.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+            <div class="flex flex-col h-full relative z-10">
+                <h3 class="text-3xl mb-2">Работа и деловая<br>активность</h3>
+                <p class="mt-auto text-base">В составе района запланирован административно-деловой  центр. Пространство для офисов, рабочих<br> форматов и малого бизнеса — в районе, где можно жить, работать, строить своё дело.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="flex flex-col items-start justify-center space-y-6">
+            <h3 class="text-5xl">Город<br>в природе</h3>
+            <p class="text-lg">Пространство, где природа становится частью повседневной жизни</p>
+            <a class="inline-block bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer" href="">Выбрать квартиру</a>
+        </div>
+        <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-21.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+            <div class="flex flex-col h-full relative z-10">
+                <h3 class="text-3xl mb-2">Зелёные пространства<br>внутри района</h3>
+                <p class="mt-auto text-base">Парки, скверы и прогулочные маршруты: для отдыха и общения без суеты</p>
+            </div>
+        </div>
+        <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-20.webp')] bg-cover bg-no-repeat p-8 bg-center rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+            <div class="flex flex-col h-full relative z-10">
+            <h3 class="text-3xl mb-2">Больше света, воздуха<br>и простора</h3>
+            <p class="mt-auto text-base">Никаких высоток — только малоэтажные дома</p>
+            </div>
+        </div>
+        <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-14.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+            <div class="flex flex-col h-full relative z-10">
+              <h3 class="text-3xl mb-2">Близость к природному<br>заповеднику «Сурки»</h3>
+              <p class="mt-auto text-base">Всего в 2 км — живописный ландшафт
+                с историей, редкой флорой и фауной</p>
+            </div>
+          </div>
+          
+    </div>
+
+    <div class="mt-8">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl mb-4">Комфортная среда<br>на каждый день</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Решение для тех, кто ценит порядок и покой.<br>
+Всё важное уже продумано — остаётся просто наслаждаться жизнью.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-9.webp')] bg-center bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <h3 class="text-3xl mb-2">Двор без машин</h3>
+                    <p class="mt-auto text-base">Концепция «двор без машин» реализуется через размещение парковок по периметру кварталов и вдоль внешней границы района. Мест достаточно как для жителей, так и для гостей. Отдельные парковочные зоны оснащаются зарядными станциями для электромобилей</p>
+                </div>
+            </div>
+            <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-6.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <h3 class="text-3xl mb-2">Площадки для игр,<br>
+                        спорта и отдыха</h3>
+                    <p class="mt-auto text-base">В каждом квартале будут детские площадки для разных возрастов, спортивные зоны и места для отдыха. Зелёные маршруты свяжут дворы и создадут удобное пространство для прогулок, общения и ежедневной активности</p>
+                </div>
+            </div>
+            <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-25.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <h3 class="text-3xl mb-2">Чистота, порядок<br>
+                        и контроль</h3>
+                    <p class="mt-auto text-base">Уборка, обслуживание, благоустройство и озеленение — всё это выполняется под контролем управляющей структуры района. Регулярная работа команды делает среду устойчивой, ухоженной и предсказуемо комфортной</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative rounded-4xl my-6 min-h-[800px] bg-gradient-to-b from-[#567BC1] to-[#37589B] overflow-hidden">
+        <div class="absolute inset-0 bg-[url('../../assets/img/Park-19.webp')] bg-no-repeat bg-right-bottom pointer-events-none"></div>
+        <div class="relative p-6 md:p-12 flex flex-col max-w-1/2 gap-8 h-full min-h-[800px] z-10">
+          <h2 class="text-5xl md:text-6xl leading-none text-white">
+            Надёжный<br> застройщик
+          </h2>
+          <p class="text-2xl text-white">
+            Группа компаний «РемСтройСервис» — застройщик с опытом более 600 000 м² жилья и масштабными проектами, такими как город-спутник Romanovo City. 
+            <br><br>
+            Компания развивает районы целиком: от идеи и благоустройства до управления через собственную управляющую компанию.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+            <button class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+              Выбрать квартиру
+            </button>
+          </div>
+        </div>
+    </div>
+
+    <div class="mt-24">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl mb-4">Форматы жилья</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Это не просто квадратные метры, а сценарий жизни, в котором учтены реальные потребности
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-12.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <div class="relative z-10 flex flex-col items-start h-full"> 
+                        <div class="bg-white rounded-full px-4 py-2 inline-flex items-center gap-2 shadow mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M3.375 12.375C2.25 13.32 1.875 16.125 1.875 16.125C1.875 16.125 4.68 15.75 5.625 14.625C6.1575 13.995 6.15 13.0275 5.5575 12.4425C5.26598 12.1643 4.88197 12.0035 4.47917 11.991C4.07637 11.9786 3.68316 12.1153 3.375 12.375Z" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 11.2499L6.75 8.99994C7.14911 7.96451 7.65165 6.97199 8.25 6.03744C9.12389 4.64018 10.3407 3.48973 11.7848 2.69551C13.2288 1.90129 14.852 1.48972 16.5 1.49994C16.5 3.53994 15.915 7.12494 12 9.74994C11.0527 10.349 10.0476 10.8515 9 11.2499Z" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.75 9.00001H3C3 9.00001 3.4125 6.72751 4.5 6.00001C5.715 5.19001 8.25 6.00001 8.25 6.00001" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 11.25V15C9 15 11.2725 14.5875 12 13.5C12.81 12.285 12 9.75 12 9.75" stroke="#233232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="text-xs font-semibold text-gray-700 uppercase">Уже в продаже</span>
+                        </div>
+                        
+                        <h3 class="text-3xl mb-2">Таунхаусы</h3>
+                        <p class="mt-6 text-base">Идеальный выбор для тех, кто ценит приватность, но хочет остаться в черте города</p>
+                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                            Выбрать квартиру
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-7.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <div class="relative z-10 flex flex-col items-start h-full"> 
+                        <div class="bg-white rounded-full px-4 py-2 inline-flex items-center gap-2 shadow mb-6">
+                            <span class="text-xs font-semibold text-gray-700 uppercase">Скоро</span>
+                        </div>
+                        
+                        <h3 class="text-3xl mb-2">Апартаменты<br>
+                            на 8–16 квартир</h3>
+                        <p class="mt-6 text-base">Уютный масштаб, продуманные планировки с гардеробной и двумя санузлами. На первом этаже — отдельный вход и терраса, на третьем — двухуровневые варианты.</p>
+                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                            Напомнить о старте продаж
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-8.webp')] bg-left-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <div class="relative z-10 flex flex-col items-start h-full"> 
+                        <div class="bg-white rounded-full px-4 py-2 inline-flex items-center gap-2 shadow mb-6">
+                            <span class="text-xs font-semibold text-gray-700 uppercase">Скоро</span>
+                        </div>
+                        
+                        <h3 class="text-3xl mb-2">Урбан-виллы<br>
+                            на 4–6 квартир</h3>
+                        <p class="mt-6 text-base">Компактные секции с собственным лобби, колясочной и атмосферой «своего дома». Формат для тех, кто ищет комфорт, тишину и порядок.</p>
+                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                            Напомнить о старте продаж
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-33.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-0"></div>
+                <div class="flex flex-col h-full relative z-10">
+                    <div class="relative z-10 flex flex-col items-start h-full"> 
+                        <div class="bg-white rounded-full px-4 py-2 inline-flex items-center gap-2 shadow mb-6">
+                            <span class="text-xs font-semibold text-gray-700 uppercase">Скоро</span>
+                        </div>
+                        
+                        <h3 class="text-3xl mb-2">Квартиры<br>
+                            и студии</h3>
+                        <p class="mt-6 text-base">Классические и евро-планировки в многоквартирных корпусах. Разумные метражи и функциональные зоны. Хороший выбор на любом этапе жизни — от первой студии до семейной трёшки.</p>
+                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                            Напомнить о старте продаж
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-6 md:gap-24">
+            <div class="col-span-2 flex flex-col justify-center p-6 md:p-12">
+
+                    <div class="flex flex-col gap-8 items-start">
+                        <h3 class="text-5xl">Безопасная<br> покупка</h3>
+                        <p class="text-lg">Проект реализуется по 214-ФЗ. Все расчёты проходят через эскроу-счета — ваши деньги защищены до получения ключей</p>
+                        <a href="" class="block bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+                            Персональный менеджер
+                        </a>
+                    </div>
+    
+            </div>
+            <div class="col-span-4 grid grid-cols-2 gap-6">
+                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h4 class="text-3xl">Ипотека</h4>
+                    <p>Ипотека от ведущих банков —
+                        с индивидуальным подбором условий</p>
+                    <img class="mt-auto" src="assets/img/landmark.svg" alt="">
+                </div>
+                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h4 class="text-3xl">Трейд ИН</h4>
+                    <p>Обменивайте свою старую недвижимость на новую — с выгодой
+                        и без лишних хлопот</p>
+                    <img class="mt-auto" src="assets/img/refresh-cw.svg" alt="">
+                </div>
+                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h4 class="text-3xl">Рассрочка 0%</h4>
+                    <p>Фиксированная цена и поэтапная оплата — без переплат и процентов</p>
+                    <img class="mt-auto" src="assets/img/coins.svg" alt="">
+                </div>
+                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h4 class="text-3xl">Материнский капитал</h4>
+                    <p>Можно использовать маткапитал — полностью или как часть первого взноса</p>
+                    <img class="mt-auto" src="assets/img/baby.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-6">
+            <div class="col-span-2 flex flex-col items-start">
+                <h2 class="text-5xl mb-8">Контактная<br> информация</h2>
+
+                <address class="not-italic flex flex-col gap-2 mb-6">
+                    <strong class="block text-2xl font-normal">Офис продаж</strong>
+                    <span class="block text-xl font-thin">г. Липецк, ул. Космонавтов, д. 24/1</span>
+                </address>
+                <address class="not-italic flex flex-col gap-2 mb-6">
+                    <strong class="block text-2xl font-normal">Расположение района</strong>
+                    <span class="block text-xl font-thin">г. Липецк, Лебедянское шоссе</span>
+                </address>
+                <address class="not-italic flex flex-col gap-2 mb-6">
+                    <strong class="block text-2xl font-normal">Режим работы</strong>
+                    <span class="block text-xl font-thin">Понедельник – пятница: с 09:00 до 19:00</span>
+                    <span class="block text-xl font-thin">Суббота: с 10:00 до 15:00</span>
+                    <span class="block text-xl font-thin">Воскресенье: выходной</span>
+                    <span class="block text-xl font-thin">Перерыв: с 12:00 до 13:00</span>
+                </address>
+                <a href="" class="block bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+                    Обратный звонок
+                </a>
+            </div>
+            <div class="col-span-4">
+                <div class="overflow-hidden rounded-4xl">
+                    <div id="map" class="w-full h-[500px]"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+<footer>
+    <div class="grid grid-cols-1 md:grid-cols-4 bg-white gap-6 p-6 md:12 rounded-4xl mt-20">
+        <div class="col-span-1">
+            <h5 class="text-xl mb-6">Юридическая информация</h5>
+            <div class="text-sm font-thin leading-6">
+                <span class="block">ООО СЗ «Ремстройсервис Романово»</span>
+                <span class="block">ИНН / ОГРН: 4826145230 / 1204800009853</span>
+                <span class="block">398016, г. Липецк, ул. Космонавтов, д. 26/1</span>
+                <a href="" class="text-[#DA966E] block font-thin">Политика конфиденциальности</a>
+                <a href="" class="text-[#DA966E] block font-thin">Согласие пользователя</a>
+            </div>
+        </div>
+        <div class="col-span-2">
+            <h5 class="text-xl mb-6">Информация по объектам</h5>
+            <div class="text-sm font-thin leading-6">
+                <p>Проектные декларации, разрешительная документаци и ход строительства размещены на сайте www.наш.дом.рф</p>
+                <p>Продолжая использовать наш сайт, вы даете согласие на обработку файлов cookie, пользовательских данных в целях функционирования сайта, проведения ретаргетинга и статистических исследований. Если вы не хотите, чтобы ваши данные обрабатывались, покиньте сайт. Вся информация на данном сайте (цены, площади помещений, фото отделки, фасада, условия продажи и пр.) приведена как справочная и не является публичной офертой, определяемой положениями статьи 437 ГК РФ и может быть изменена в любое время без предупреждения. Этот сайт защищен reCAPTCHA, и к нему применяются Политика конфиденциальности Google и условия предоставления услуг
                 </p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-8 bg-warm-gray rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Современная архитектура</h3>
-                    <p class="text-gray-600">Уникальный архитектурный проект с использованием современных материалов и технологий.</p>
-                </div>
-                
-                <div class="text-center p-8 bg-warm-gray rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Удобное расположение</h3>
-                    <p class="text-gray-600">Отличная транспортная доступность и развитая инфраструктура района.</p>
-                </div>
-                
-                <div class="text-center p-8 bg-warm-gray rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Безопасность</h3>
-                    <p class="text-gray-600">Современные системы безопасности и круглосуточная охрана территории.</p>
-                </div>
-            </div>
         </div>
-    </section>
+        <div class="col-span-1">
+            <h5 class="text-xl mb-6">Мы в соцсетях</h5>
+            <ul class="flex gap-8 items-center mb-10">
+                <li><a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <path d="M28.5 4.5H7.5C5.8425 4.5 4.5 5.8425 4.5 7.5V28.5C4.5 30.1575 5.8425 31.5 7.5 31.5H28.5C30.1575 31.5 31.5 30.1575 31.5 28.5V7.5C31.5 5.8425 30.1575 4.5 28.5 4.5ZM26.8605 23.526L24.258 23.562C24.258 23.562 23.697 23.6715 22.962 23.1645C21.9885 22.4955 21.0705 20.7555 20.355 20.982C19.629 21.213 19.6515 22.779 19.6515 22.779C19.6515 22.779 19.6575 23.055 19.491 23.235C19.311 23.4285 18.9585 23.409 18.9585 23.409H17.793C17.793 23.409 15.222 23.622 12.9555 21.2595C10.4865 18.684 8.3055 13.6005 8.3055 13.6005C8.3055 13.6005 8.178 13.2795 8.3145 13.116C8.469 12.9345 8.886 12.93 8.886 12.93L11.6715 12.9165C11.6715 12.9165 11.934 12.963 12.123 13.101C12.2775 13.215 12.366 13.4295 12.366 13.4295C12.366 13.4295 12.816 14.571 13.413 15.6045C14.577 17.619 15.1185 18.06 15.513 17.844C16.089 17.529 15.9165 14.997 15.9165 14.997C15.9165 14.997 15.927 14.0775 15.627 13.668C15.393 13.3485 14.9535 13.254 14.76 13.23C14.6025 13.209 14.859 12.8445 15.1935 12.6795C15.6945 12.435 16.581 12.42 17.6265 12.4305C18.441 12.4395 18.6765 12.489 18.9945 12.567C19.956 12.7995 19.629 13.6965 19.629 15.849C19.629 16.539 19.5045 17.508 20.001 17.8275C20.2155 17.9655 20.7375 17.8485 22.041 15.6285C22.6605 14.5755 23.124 13.338 23.124 13.338C23.124 13.338 23.226 13.1175 23.3835 13.023C23.5455 12.9255 23.763 12.9555 23.763 12.9555L26.6955 12.9375C26.6955 12.9375 27.576 12.831 27.72 13.2315C27.87 13.65 27.3915 14.6265 26.193 16.224C24.2265 18.849 24.0075 18.6045 25.641 20.1225C27.201 21.573 27.5235 22.278 27.5775 22.3665C28.2225 23.4405 26.8605 23.526 26.8605 23.526Z" fill="#233232"/>
+                      </svg>
+                </a></li>
+                <li><a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="37" height="36" viewBox="0 0 37 36" fill="none">
+                        <path d="M32.0408 4.80687L4.00017 15.8228C2.87177 16.3358 2.49011 17.3631 3.72743 17.9207L10.9211 20.2496L28.3143 9.29859C29.264 8.61111 30.2364 8.79444 29.3997 9.55071L14.4612 23.3301L13.9919 29.1615C14.4266 30.062 15.2224 30.0662 15.73 29.6186L19.863 25.6346L26.9413 31.0344C28.5853 32.0259 29.4799 31.386 29.8337 29.5687L34.4764 7.17243C34.9585 4.93544 34.1363 3.94979 32.0408 4.80687Z" fill="#233232"/>
+                      </svg>
+                </a></li>
+                <li><a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <path d="M20.6036 20.6036C18.4821 22.7925 18.3279 25.5214 18.1446 31.5C23.7182 31.5 27.5657 31.4807 29.5521 29.5521C31.4807 27.5657 31.5 23.535 31.5 18.1446C25.5214 18.3375 22.7925 18.4821 20.6036 20.6036ZM4.5 18.1446C4.5 23.535 4.51929 27.5657 6.44786 29.5521C8.43429 31.4807 12.2818 31.5 17.8554 31.5C17.6625 25.5214 17.5179 22.7925 15.3964 20.6036C13.2075 18.4821 10.4786 18.3279 4.5 18.1446ZM17.8554 4.5C12.2914 4.5 8.43429 4.51929 6.44786 6.44786C4.51929 8.43429 4.5 12.465 4.5 17.8554C10.4786 17.6625 13.2075 17.5179 15.3964 15.3964C17.5179 13.2075 17.6721 10.4786 17.8554 4.5ZM20.6036 15.3964C18.4821 13.2075 18.3279 10.4786 18.1446 4.5C23.7182 4.5 27.5657 4.51929 29.5521 6.44786C31.4807 8.43429 31.5 12.465 31.5 17.8554C25.5214 17.6625 22.7925 17.5179 20.6036 15.3964Z" fill="#233232"/>
+                      </svg>
+                </a></li>
+                <li><a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <path d="M32.373 9.279C32.028 7.989 31.011 6.972 29.721 6.627C27.381 6 18 6 18 6C18 6 8.619 6 6.279 6.627C4.989 6.972 3.972 7.989 3.627 9.279C3 11.619 3 18 3 18C3 18 3 24.381 3.627 26.721C3.972 28.011 4.989 29.028 6.279 29.373C8.619 30 18 30 18 30C18 30 27.381 30 29.721 29.373C31.0125 29.028 32.028 28.011 32.373 26.721C33 24.381 33 18 33 18C33 18 33 11.619 32.373 9.279ZM15 23.196V12.804L24 18L15 23.196Z" fill="#233232"/>
+                      </svg>
+                </a></li>
+            </ul>
+            <p class="font-thin text-sm">Подписывайтесь и будьте в курсе
+                последних событий!</p>
+        </div>
+    </div>
+</footer>
 
-    <!-- Infrastructure Section -->
-    <section id="infrastructure" class="py-20 bg-gradient-to-r from-warm-gray to-peach">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-navy mb-4">Инфраструктура</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Все необходимое для комфортной жизни находится в шаговой доступности.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Школы</h3>
-                    <p class="text-sm text-gray-600">3 школы в радиусе 500м</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Медицина</h3>
-                    <p class="text-sm text-gray-600">Поликлиника в 200м</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Торговые центры</h3>
-                    <p class="text-sm text-gray-600">2 ТЦ в 5 минутах</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-navy mb-2">Парки</h3>
-                    <p class="text-sm text-gray-600">Городской парк рядом</p>
-                </div>
-            </div>
-            
-            <!-- 3D Map visualization placeholder -->
-            <div class="mt-16 bg-white rounded-2xl shadow-2xl overflow-hidden">
-                <div class="h-96 bg-gradient-to-br from-sage to-navy flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <h3 class="text-2xl font-bold mb-4">Интерактивная карта района</h3>
-                        <p class="text-lg opacity-90">3D визуализация инфраструктуры</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Apartments Section -->
-    <section id="apartments" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-navy mb-4">Форматы жилья</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Выберите идеальный вариант для вашей семьи из разнообразных планировок.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-gradient-to-br from-peach to-warm-gray p-6 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="bg-white rounded-xl p-4 mb-4">
-                        <img src="/api/placeholder/200/150" alt="Студия" class="w-full h-32 object-cover rounded-lg">
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">Студии</h3>
-                    <p class="text-gray-600 mb-4">От 25 м² • От 2.5 млн ₽</p>
-                    <button class="w-full bg-sage text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
-                        Подробнее
-                    </button>
-                </div>
-                
-                <div class="bg-gradient-to-br from-peach to-warm-gray p-6 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="bg-white rounded-xl p-4 mb-4">
-                        <img src="/api/placeholder/200/150" alt="1-комнатная" class="w-full h-32 object-cover rounded-lg">
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">1-комнатные</h3>
-                    <p class="text-gray-600 mb-4">От 35 м² • От 3.8 млн ₽</p>
-                    <button class="w-full bg-sage text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
-                        Подробнее
-                    </button>
-                </div>
-                
-                <div class="bg-gradient-to-br from-peach to-warm-gray p-6 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="bg-white rounded-xl p-4 mb-4">
-                        <img src="/api/placeholder/200/150" alt="2-комнатная" class="w-full h-32 object-cover rounded-lg">
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">2-комнатные</h3>
-                    <p class="text-gray-600 mb-4">От 55 м² • От 5.2 млн ₽</p>
-                    <button class="w-full bg-sage text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
-                        Подробнее
-                    </button>
-                </div>
-                
-                <div class="bg-gradient-to-br from-peach to-warm-gray p-6 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="bg-white rounded-xl p-4 mb-4">
-                        <img src="/api/placeholder/200/150" alt="3-комнатная" class="w-full h-32 object-cover rounded-lg">
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">3-комнатные</h3>
-                    <p class="text-gray-600 mb-4">От 75 м² • От 7.1 млн ₽</p>
-                    <button class="w-full bg-sage text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
-                        Подробнее
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Features Section -->
-    <section class="py-20 bg-navy text-white">
-        <div class="container mx-auto px-4">
+    <!-- <section class="py-20 bg-navy text-white">
+        <div class="">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">Комфортная среда</h2>
                 <p class="text-lg opacity-90 max-w-2xl mx-auto">
@@ -256,7 +570,7 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center p-8 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm hover:bg-opacity-20 transition-all">
                     <div class="w-20 h-20 bg-peach rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-5-10V3a1 1 0 011-1h4a1 1 0 011 1v2M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                     </div>
@@ -266,7 +580,7 @@
                 
                 <div class="text-center p-8 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm hover:bg-opacity-20 transition-all">
                     <div class="w-20 h-20 bg-peach rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                         </svg>
                     </div>
@@ -276,7 +590,7 @@
                 
                 <div class="text-center p-8 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm hover:bg-opacity-20 transition-all">
                     <div class="w-20 h-20 bg-peach rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
                     </div>
@@ -285,14 +599,14 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gradient-to-br from-warm-gray via-peach to-white">
-        <div class="container mx-auto px-4">
+    <!-- <div id="contact" class="py-20 bg-gradient-to-br from-warm-gray via-peach to-white">
+        <div class="">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl font-bold text-navy mb-6">Безопасная покупка</h2>
+                    <h2 class="text-4xl font-bold mb-6">Безопасная покупка</h2>
                     <div class="space-y-4 mb-8">
                         <div class="flex items-center space-x-4">
                             <div class="w-8 h-8 bg-sage rounded-full flex items-center justify-center">
@@ -321,7 +635,7 @@
                     </div>
                     
                     <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <h3 class="text-xl font-bold text-navy mb-4">Контактная информация</h3>
+                        <h3 class="text-xl font-bold mb-4">Контактная информация</h3>
                         <div class="space-y-3">
                             <div class="flex items-center space-x-3">
                                 <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -347,7 +661,7 @@
                 </div>
                 
                 <div class="bg-white p-8 rounded-2xl shadow-2xl">
-                    <h3 class="text-2xl font-bold text-navy mb-6">Получить консультацию</h3>
+                    <h3 class="text-2xl font-bold mb-6">Получить консультацию</h3>
                     <form class="space-y-4" id="contact-form">
                         <div>
                             <input type="text" placeholder="Ваше имя" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-all">
@@ -368,11 +682,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div> -->
 
     <!-- Footer -->
-    <footer class="bg-navy text-white py-12">
-        <div class="container mx-auto px-4">
+    <!-- <footer class="bg-navy text-white py-12">
+        <div class="">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="text-2xl font-bold mb-4">Story Park</div>
@@ -426,8 +740,8 @@
                 <p>&copy; 2024 Story Park. Все права защищены.</p>
             </div>
         </div>
-    </footer>
-
+    </footer> -->
+</div>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Park</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    body {
+      font-family: 'Geologica', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <header class="w-full p-4 flex justify-between items-center border-b">
+    <h1 class="text-xl font-bold text-orange-600">Story Park</h1>
+    <nav class="space-x-4 hidden md:flex">
+      <a href="#" class="hover:text-orange-500">О проекте</a>
+      <a href="#" class="hover:text-orange-500">Инфраструктура</a>
+      <a href="#" class="hover:text-orange-500">Форматы жилья</a>
+      <a href="#" class="hover:text-orange-500">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="bg-orange-100 p-8 flex flex-col lg:flex-row items-center justify-between">
+    <div class="max-w-lg">
+      <h2 class="text-3xl font-bold mb-4">Ключ к новой истории</h2>
+      <p class="mb-4">Новый благоустроенный семейный район, созданный для комфортной жизни, вдохновлённой будущим</p>
+      <button class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">О проекте</button>
+    </div>
+    <img src="/img/family-hero.webp" alt="Семья" class="mt-6 lg:mt-0 max-w-xs rounded-xl">
+  </section>
+
+  <section class="py-8 px-4 max-w-7xl mx-auto">
+    <div class="bg-gray-100 rounded-xl overflow-hidden">
+      <img src="/img/taunhausy.webp" alt="Таунхаусы" class="w-full">
+      <div class="p-4">
+        <h3 class="text-2xl font-semibold mb-2">Таунхаусы</h3>
+        <p class="mb-4">Простор для жизни</p>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Узнать больше</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-gray-50">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold">Инфраструктура для жизни</h2>
+      <p class="text-gray-600">Всё рядом — школы, детсады, магазины, спорт и парки</p>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <img src="/img/infra-map.webp" alt="Карта района" class="rounded-xl w-full">
+      <div class="grid gap-4">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h4 class="font-semibold mb-2">Образование и развитие</h4>
+          <p>Школы и детские сады рядом с домом</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h4 class="font-semibold mb-2">Здоровье и спорт</h4>
+          <p>Поликлиника, спортплощадки и фитнес</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h4 class="font-semibold mb-2">Магазины, кафе и досуг</h4>
+          <p>Торговые точки, пекарни и кафе на территории</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h4 class="font-semibold mb-2">Работа и деловая активность</h4>
+          <p>Офисы и коворкинги в шаговой доступности</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 px-4 max-w-7xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Форматы жилья</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl shadow overflow-hidden">
+        <img src="/img/type1.webp" alt="Тип 1" class="w-full">
+        <div class="p-4">
+          <h4 class="font-semibold mb-2">Таунхаусы</h4>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow overflow-hidden">
+        <img src="/img/type2.webp" alt="Тип 2" class="w-full">
+        <div class="p-4">
+          <h4 class="font-semibold mb-2">Апартаменты в 4-этажных домах</h4>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow overflow-hidden">
+        <img src="/img/type3.webp" alt="Тип 3" class="w-full">
+        <div class="p-4">
+          <h4 class="font-semibold mb-2">Квартиры в многоквартирных домах</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-100 py-6 px-4 mt-12">
+    <div class="max-w-7xl mx-auto text-center text-sm text-gray-500">
+      © 2025 Story Park. Все права защищены. | Политика конфиденциальности
+    </div>
+  </footer>
+</body>
+</html>
