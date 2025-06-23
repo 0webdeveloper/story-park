@@ -1,8 +1,80 @@
-@theme {
-    --color-peach : #F5D5AE;
-    --color-sage : #8FA68E;
-    --color-navy : #233232;
-    --color-warm-gray : #F8F6F3;
-    --font-geologica: 'Geologica', sans-serif;
-    --color-clifford: #da373d;
+html, body {scrollbar-gutter: stable;}
+
+.active { background: var(--color-peach);}
+
+dialog {
+    animation: fade-out 0.5s ease-out;
+    will-change: transform, opacity;
+}
+
+dialog[open] {
+    will-change: transform, opacity;
+    animation: slide-in .3s ease-out;
+}
+
+dialog[open]::backdrop {
+    transition: background-color .3s ease-out;
+    background-color: rgb(0 0 0 / 50%);
+    animation: backdrop-fade-in .3s ease-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes slide-in {
+    from {
+        transform: translate3D(0, -30px, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3D(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes backdrop-fade-in {
+    0% {
+        background-color: rgb(0 0 0 / 0%);
+    }
+
+    100% {
+        background-color: rgb(0 0 0 / 50%);
+    }
+}
+
+/* shine btn */
+@keyframes shine {
+  0% {
+    left: -100%;
   }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine 2s infinite;
+}
+.opacity-0 { opacity: 0; }
+.opacity-100 { opacity: 1; }
+.translate-y-full { transform: translateY(100%); }
+.translate-y-0 { transform: translateY(0); }

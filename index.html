@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <link rel="stylesheet" type="text/tailwindcss" href="./assets/css/style.css"> -->
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     
@@ -26,32 +26,45 @@
         --radius-36: 2.25rem;
       }
 
-      .active {
-        background: var(--color-peach);
-      }
+      @layer utilities {
+        .no-scrollbar-x::-webkit-scrollbar {
+            display: none;
+            height: 0;
+        }
+        .no-scrollbar-x {
+            -ms-overflow-style: none; /* IE и Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
+     }
+
+     @layer base {
+        dialog {
+            margin: auto;
+        }
+    }
     </style>
 </head>
 <body class="font-geologica bg-main text-navy leading-none">
-    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="w-full py-2 px-4 sm:px-6 lg:px-8 2xl:max-w-[1920px] 2xl:mx-auto">
 
-    <header class="bg-white shadow-sm rounded-4xl">
-        <nav class="flex items-center p-6 md:p-8">
-            <a href="/" class="text-2xl font-bold flex items-center gap-2 mr-12">
+    <header class="sticky top-0 z-10 bg-white shadow-sm rounded-4xl">
+        <nav class="flex flex-wrap lg:flex-nowrap items-center p-6 md:p-8">
+            <a href="/" class="text-xl md:text-2xl font-bold flex items-center gap-2 mr-12">
                 <img src="assets/img/logo.svg" alt="Story Park">
                 Story Park
             </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-700 hover transition-colors">Жилой район</a>
-                <a href="#about" class="text-gray-700 hover transition-colors">Форматы жилья</a>
-                <a href="#infrastructure" class="text-gray-700 hover transition-colors">Ипотека</a>
-                <a href="#apartments" class="text-gray-700 hover transition-colors">График стройки</a>
-                <a href="#contact" class="text-gray-700 hover transition-colors">О застройщике </a>
+            <div class="main-menu order-2 lg:order-1 hidden w-full lg:w-auto lg:flex space-x-8 mt-4 lg:mt-0 leading-8">
+                <a href="#home" class="block text-gray-700 hover transition-colors">Жилой район</a>
+                <a href="#formats" class="block text-gray-700 hover transition-colors">Форматы жилья</a>
+                <a href="#mortgage" class="block text-gray-700 hover transition-colors">Ипотека</a>
+                <a href="#scheme" class="block text-gray-700 hover transition-colors">График стройки</a>
+                <a href="#about" class="block text-gray-700 hover transition-colors">О застройщике </a>
             </div>
-            <address class="hidden md:flex text-sm text-gray-700 ml-auto not-italic gap-4">
+            <address class="lg:order-2 hidden xl:flex text-sm text-gray-700 ml-auto not-italic gap-4">
                 <span>г. Липецк, Лебедянское шоссе</span>
                 <a href="tel:+74742516393" class="font-semibold">+7 4742 51-63-93</a>
             </address>
-            <button class="md:hidden" id="mobile-menu-toggle">
+            <button class="order-1 lg:order-3 lg:hidden ml-auto" id="mobile-menu-toggle">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -59,17 +72,17 @@
         </nav>
     </header>
 
-    <div id="home" class="bg-peach rounded-4xl my-6 max-h-[700px]">
+    <div id="home" class="section bg-peach rounded-4xl my-6 max-h-[700px]">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div class="space-y-6 p-6 md:p-12 flex flex-col">
-                <h1 class="text-5xl md:text-6xl leading-none">
+                <h1 class="text-4xl md:text-6xl leading-none">
                     Ключ к новой<br> истории
                 </h1>
-                <p class="text-2xl">
+                <p class="text-xl md:text-2xl">
                     Новый жилой район города, где природа и архитектура создают пространство для жизни, вдохновения и будущего
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-                    <button class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+                    <button class="shine bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
                         Выбрать квартиру
                     </button>
                 </div>
@@ -80,9 +93,9 @@
         </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-8">
+    <div class="section flex flex-col xl:flex-row gap-8">
         <div class="flex-1 flex">
-            <div class="relative rounded-3xl overflow-hidden w-full flex flex-col p-12 bg-[url('../../assets/img/Park-4.webp')] bg-cover bg-no-repeat">
+            <div class="relative rounded-4xl overflow-hidden w-full flex flex-col p-6 md:p-16 bg-[url('../../assets/img/Park-4.webp')] bg-bottom-left bg-cover bg-no-repeat">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
 
                 <div class="relative z-10 flex flex-col h-full">
@@ -112,9 +125,9 @@
                       </div>
                     </div>
                     <div class="flex flex-col items-start mt-8 h-full">
-                      <h1 class="text-white text-4xl md:text-5xl mb-4">Таунхаусы</h1>
-                      <p class="text-white mb-8 text-base">Идеальный выбор для тех, кто ценит приватность,<br> но хочет остаться в черте города</p>
-                        <button class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                      <h2 class="text-white text-4xl md:text-4xl md:text-5xl mb-4">Таунхаусы</h2>
+                      <p class="text-white mb-8 text-base font-thin">Идеальный выбор для тех, кто ценит приватность,<br> но хочет остаться в черте города</p>
+                        <button class="shine bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
                             Выбрать квартиру
                         </button>
                     </div>
@@ -123,129 +136,147 @@
               
         </div>
         <div class="flex-1 flex">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 text-lg w-full">
-                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="lg:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4 text-lg w-full flex no-scrollbar-x">
+                <div class="col-span-1 md:col-span-2 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none shrink-0 grow min-w-[260px]">
                     <span>Индивидуальный<br>вход</span>
                     <img class="mt-auto" src="assets/img/rocket.svg" alt="">
                 </div>
-                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="col-span-1 md:col-span-2 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none shrink-0 grow min-w-[260px]">
                     <span>Придомовая<br>территория</span>
                     <img class="mt-auto" src="assets/img/trees.svg" alt="">
-                </div><div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                </div><div class="col-span-1 md:col-span-2 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none shrink-0 grow min-w-[260px]">
                     <span>Свободная<br>парковка</span>
                     <img class="mt-auto" src="assets/img/car.svg" alt="">
                 </div>
-                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="col-span-1 md:col-span-2 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none shrink-0 grow min-w-[260px]">
                     <span>Два этажа</span>
                     <img class="mt-auto" src="assets/img/home.svg" alt="">
                 </div>
-                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="col-span-1 md:col-span-2 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none shrink-0 grow min-w-[260px]">
                     <span>Высокие<br>потолки</span>
                     <img class="mt-auto" src="assets/img/arrow-up-square.svg" alt="">
                 </div>
-                <div class="col-span-2 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="col-span-1 md:col-span-2 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none shrink-0 grow min-w-[260px]">
                     <span>Большие окна<br>в пол</span>
                     <img class="mt-auto" src="assets/img/kanban-square.svg" alt="">
                 </div>
 
 
-                <div class="col-span-3 bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="col-span-1 md:col-span-3 bg-white rounded-4xl p-6 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none">
                     <span>Просторная<br>кухня-гостиная</span>
                     <img class="mt-auto" src="assets/img/lamp-ceiling.svg" alt="">
                 </div>
-                <div class="col-span-3 bg-peach bg-[url(../../assets/img/Vector.svg)] bg-no-repeat bg-bottom-right rounded-3xl p-4 flex flex-col items-start space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="hidden col-span-1 md:col-span-3 bg-peach bg-[url(../../assets/img/Vector.svg)] bg-no-repeat bg-bottom-right rounded-4xl p-6 md:flex flex-col items-start space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none">
                     <span>Каталог планировок<br>с характеристиками</span>
-                    <a class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto" href="">Скачать</a>
+                    <button class="openModalBtn shine bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">Скачать</button>
                 </div>
             </div>
         </div>
 
+         <div class="-mt-4 lg:hidden bg-peach bg-[url(../../assets/img/Vector.svg)] bg-no-repeat bg-bottom-right rounded-4xl p-6 flex flex-col items-start space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 leading-none">
+                    <span>Каталог планировок<br>с характеристиками</span>
+                    <button class="openModalBtn shine bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">Скачать</button>
+                </div>
+
     </div>
 
-    <div class="py-20">
+    <div id="scheme" class="section py-20">
         <div class="text-center mb-16">
-            <h2 class="text-5xl mb-4">Инфраструктура<br>для жизни</h2>
-            <p class="text-lg max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-5xl mb-4">Инфраструктура<br>для жизни</h2>
+            <p class="text-base md:text-lg max-w-5xl mx-auto">
                 В Story Park предусмотрено всё для повседневной жизни: школа, детский сад, поликлиника, спорт и торговля.<br>Это не просто жилые дома, а среда, где удобно жить, работать, учиться и отдыхать.
             </p>
         </div>
         
-        <div class="p-6 md:p-12 relative min-h-[700px] rounded-4xl overflow-hidden">
-            <ul class="relative z-10 bg-white rounded-4xl p-1 inline-flex items-center gap-2">
-                <li><button class="active uppercase text-sm cursor-pointer py-2 px-4 rounded-3xl block" type="button">Проект</button></li>
-                <li><button  class="uppercase text-sm cursor-pointer py-2 px-4 rounded-3xl block"type="button">Действующая</button></li>
-            </ul>
-            <div class="absolute inset-0">
-                <img class="w-full" src="assets/img/map.webp" alt="">
+        <div class="p-6 md:p-12 relative min-h-[500px] md:min-h-[700px] rounded-4xl overflow-hidden">
+            <div id="scheme-switcher" class="relative z-10 bg-white rounded-4xl p-1 flex items-center w-[260px] h-12 select-none">
+                <div id="scheme-indicator" class="absolute top-1 left-1 w-[124px] h-10 rounded-3xl bg-peach-btn transition-all duration-300"></div>
+                <div class="relative flex w-full z-10">
+                    <div id="scheme-project-label" class="flex-1 flex items-center justify-center cursor-pointer text-sm font-semibold transition-colors duration-300">Проект</div>
+                    <div id="scheme-map-label" class="flex-1 flex items-center justify-center cursor-pointer text-sm font-semibold transition-colors duration-300">Действующая</div>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded-4xl border border-gray-200 bg-[radial-gradient(circle,#bbb_1.2px,transparent_0)] bg-[size:32px_32px] absolute inset-0" id="scheme-image-block">
+                <div class="relative w-full h-full bg-[url(../assets/img/map-large.webp)] bg-no-repeat bg-center bg-cover">
+                    <button class="cursor-pointer absolute top-[350px] left-[700px]">
+                        <span class="block w-[30px] h-[30px] bg-[url(../assets/img/pin.svg)] bg-no-repeat bg-center bg-cover"></span>
+                    </button>
+                     <button class="cursor-pointer absolute top-[350px] left-[1300px]">
+                        <span class="block w-[30px] h-[30px] bg-[url(../assets/img/pin.svg)] bg-no-repeat bg-center bg-cover"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="absolute inset-0 hidden" id="scheme-map-block">
+                <div id="scheme-map" style="width:100%;height:100%;"></div>
             </div>
         </div>
     </div>
         
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="section grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        <div class="relative h-full max-h-[400px] bg-[url('../../assets/img/Park-17.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
-            <div class="absolute inset-0 bg-black/50 z-0"></div>
+        <div class="relative h-full min-h-[400px] bg-[url('../../assets/img/Park-22.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/30 z-0"></div>
             <div class="flex flex-col h-full relative z-10">
-                <h3 class="text-3xl mb-2">Образование<br>и развитие</h3>
+                <h3 class="text-3xl mb-8">Образование<br>и развитие</h3>
                 <p class="mt-auto text-base">Строительство школы и детского сада начнётся в январе 2026 года.<br>
     Обучение, развитие и внеурочные занятия — в шаговой доступности от дома.</p>
             </div>
         </div>
         
-        <div class="h-full max-h-[400px] overflow-hidden flex rounded-3xl shadow-lg hover:shadow-xl transition-all">
+        <div class="max-h-[400px] overflow-hidden flex flex-wrap md:flex-nowrap rounded-4xl shadow-lg hover:shadow-xl transition-all">
             <div class="flex flex-col p-6">
-                <h3 class="text-3xl mb-2">Здоровье<br>и спорт</h3>
-                <p class="mt-auto text-sm text-gray-600">В районе появятся поликлиника и спортивный комплекс. Всё, чтобы заботиться о здоровье и быть активным — рядом с домом.</p>
+                <h3 class="text-3xl mb-8">Здоровье<br>и спорт</h3>
+                <p class="mt-auto text-base text-gray-600">В районе появятся поликлиника и спортивный комплекс. Всё, чтобы заботиться о здоровье и быть активным — рядом с домом.</p>
             </div>
             <div>
                 <img class="w-full" src="assets/img/Park-13.webp" alt="">
             </div>
         </div>
         
-        <div class="h-full max-h-[400px] overflow-hidden flex rounded-3xl shadow-lg hover:shadow-xl transition-all">
+        <div class="max-h-[400px] overflow-hidden flex flex-wrap md:flex-nowrap rounded-4xl shadow-lg hover:shadow-xl transition-all">
             <div class="flex flex-col p-6">
-                <h3 class="text-3xl mb-2">Магазины, кафе<br>и досуг</h3>
-                <p class="mt-auto text-sm text-gray-600">В районе появятся торговый и культурно-досуговый центры, а также предприятия общественного питания. Всё, что нужно для повседневных дел и встреч — в пределах района.</p>
+                <h3 class="text-3xl mb-8">Магазины, кафе<br>и досуг</h3>
+                <p class="mt-auto text-base text-gray-600">В районе появятся торговый и культурно-досуговый центры, а также предприятия общественного питания. Всё, что нужно для повседневных дел и встреч — в пределах района.</p>
             </div>
             <div>
                 <img class="w-full" src="assets/img/Park-16.webp" alt="">
             </div>
         </div>
 
-        <div class="relative h-full max-h-[400px] bg-[url('../../assets/img/Park-35.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
-            <div class="absolute inset-0 bg-black/50 z-0"></div>
+        <div class="relative min-h-[400px] bg-[url('../../assets/img/Park-18.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black/30 z-0"></div>
             <div class="flex flex-col h-full relative z-10">
-                <h3 class="text-3xl mb-2">Работа и деловая<br>активность</h3>
+                <h3 class="text-3xl mb-8">Работа и деловая<br>активность</h3>
                 <p class="mt-auto text-base">В составе района запланирован административно-деловой  центр. Пространство для офисов, рабочих<br> форматов и малого бизнеса — в районе, где можно жить, работать, строить своё дело.</p>
             </div>
         </div>
 
     </div>
 
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="section mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="flex flex-col items-start justify-center space-y-6">
             <h3 class="text-5xl">Город<br>в природе</h3>
             <p class="text-lg">Пространство, где природа становится частью повседневной жизни</p>
-            <a class="inline-block bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer" href="">Выбрать квартиру</a>
+            <button class="shine inline-block bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">Выбрать квартиру</button>
         </div>
-        <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-21.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+        <div class="relative min-h-[400px] md:min-h-[800px] bg-[url('../../assets/img/Park-21.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
             <div class="absolute inset-0 bg-black/50 z-0"></div>
             <div class="flex flex-col h-full relative z-10">
-                <h3 class="text-3xl mb-2">Зелёные пространства<br>внутри района</h3>
+                <h3 class="text-3xl mb-8">Зелёные пространства<br>внутри района</h3>
                 <p class="mt-auto text-base">Парки, скверы и прогулочные маршруты: для отдыха и общения без суеты</p>
             </div>
         </div>
-        <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-20.webp')] bg-cover bg-no-repeat p-8 bg-center rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+        <div class="relative min-h-[400px] md:min-h-[800px] bg-[url('../../assets/img/Park-20.webp')] bg-cover bg-no-repeat p-8 bg-center rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
             <div class="absolute inset-0 bg-black/50 z-0"></div>
             <div class="flex flex-col h-full relative z-10">
-            <h3 class="text-3xl mb-2">Больше света, воздуха<br>и простора</h3>
+            <h3 class="text-3xl mb-8">Больше света, воздуха<br>и простора</h3>
             <p class="mt-auto text-base">Никаких высоток — только малоэтажные дома</p>
             </div>
         </div>
-        <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-14.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+        <div class="relative min-h-[400px] md:min-h-[800px] bg-[url('../../assets/img/Park-14.webp')] bg-cover bg-no-repeat bg-center p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
             <div class="absolute inset-0 bg-black/50 z-0"></div>
             <div class="flex flex-col h-full relative z-10">
-              <h3 class="text-3xl mb-2">Близость к природному<br>заповеднику «Сурки»</h3>
+              <h3 class="text-3xl mb-8">Близость к природному<br>заповеднику «Сурки»</h3>
               <p class="mt-auto text-base">Всего в 2 км — живописный ландшафт
                 с историей, редкой флорой и фауной</p>
             </div>
@@ -253,35 +284,35 @@
           
     </div>
 
-    <div class="mt-8">
+    <div class="section mt-26">
         <div class="text-center mb-16">
-            <h2 class="text-5xl mb-4">Комфортная среда<br>на каждый день</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-5xl mb-4">Комфортная среда<br>на каждый день</h2>
+            <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
                 Решение для тех, кто ценит порядок и покой.<br>
 Всё важное уже продумано — остаётся просто наслаждаться жизнью.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-9.webp')] bg-center bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative min-h-[400px] md:min-h-[800px] bg-[url('../../assets/img/Park-9.webp')] bg-center bg-cover bg-no-repeat p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
-                    <h3 class="text-3xl mb-2">Двор без машин</h3>
+                    <h3 class="text-3xl mb-8">Двор без машин</h3>
                     <p class="mt-auto text-base">Концепция «двор без машин» реализуется через размещение парковок по периметру кварталов и вдоль внешней границы района. Мест достаточно как для жителей, так и для гостей. Отдельные парковочные зоны оснащаются зарядными станциями для электромобилей</p>
                 </div>
             </div>
-            <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-6.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative min-h-[400px] md:min-h-[800px] bg-[url('../../assets/img/Park-6.webp')] bg-cover bg-no-repeat p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
-                    <h3 class="text-3xl mb-2">Площадки для игр,<br>
+                    <h3 class="text-3xl mb-8">Площадки для игр,<br>
                         спорта и отдыха</h3>
                     <p class="mt-auto text-base">В каждом квартале будут детские площадки для разных возрастов, спортивные зоны и места для отдыха. Зелёные маршруты свяжут дворы и создадут удобное пространство для прогулок, общения и ежедневной активности</p>
                 </div>
             </div>
-            <div class="relative h-full min-h-[800px] bg-[url('../../assets/img/Park-25.webp')] bg-cover bg-no-repeat p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative min-h-[400px] md:min-h-[800px] bg-[url('../../assets/img/Park-25.webp')] bg-cover bg-no-repeat p-8 rounded-4xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
-                    <h3 class="text-3xl mb-2">Чистота, порядок<br>
+                    <h3 class="text-3xl mb-8">Чистота, порядок<br>
                         и контроль</h3>
                     <p class="mt-auto text-base">Уборка, обслуживание, благоустройство и озеленение — всё это выполняется под контролем управляющей структуры района. Регулярная работа команды делает среду устойчивой, ухоженной и предсказуемо комфортной</p>
                 </div>
@@ -289,35 +320,35 @@
         </div>
     </div>
 
-    <div class="relative rounded-4xl my-6 min-h-[800px] bg-gradient-to-b from-[#567BC1] to-[#37589B] overflow-hidden">
-        <div class="absolute inset-0 bg-[url('../../assets/img/Park-19.webp')] bg-no-repeat bg-right-bottom pointer-events-none"></div>
-        <div class="relative p-6 md:p-12 flex flex-col max-w-1/2 gap-8 h-full min-h-[800px] z-10">
-          <h2 class="text-5xl md:text-6xl leading-none text-white">
+    <div id="about" class="section relative rounded-4xl my-6 md:min-h-[800px] bg-gradient-to-b from-[#567BC1] to-[#37589B] overflow-hidden">
+        <div class="absolute inset-0 bg-[url('../../assets/img/Park-19.webp')] bg-no-repeat bg-contain bg-right-bottom pointer-events-none"></div>
+        <div class="relative p-6 md:p-16 flex flex-col md:max-w-1/2 gap-8 h-full md:min-h-[800px] z-10">
+          <h2 class="text-4xl md:text-5xl md:text-6xl leading-none text-white">
             Надёжный<br> застройщик
           </h2>
-          <p class="text-2xl text-white">
+          <p class="text-xl md:text-2xl text-white">
             Группа компаний «РемСтройСервис» — застройщик с опытом более 600 000 м² жилья и масштабными проектами, такими как город-спутник Romanovo City. 
             <br><br>
             Компания развивает районы целиком: от идеи и благоустройства до управления через собственную управляющую компанию.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-            <button class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+            <button class="shine bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
               Выбрать квартиру
             </button>
           </div>
         </div>
     </div>
 
-    <div class="mt-24">
+    <div id="formats" class="section mt-24">
         <div class="text-center mb-16">
-            <h2 class="text-5xl mb-4">Форматы жилья</h2>
+            <h2 class="text-4xl md:text-5xl mb-4">Форматы жилья</h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                 Это не просто квадратные метры, а сценарий жизни, в котором учтены реальные потребности
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-12.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-12.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-4xl shadow-lg flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
                     <div class="relative z-10 flex flex-col items-start h-full"> 
@@ -333,14 +364,14 @@
                         
                         <h3 class="text-3xl mb-2">Таунхаусы</h3>
                         <p class="mt-6 text-base">Идеальный выбор для тех, кто ценит приватность, но хочет остаться в черте города</p>
-                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                        <button class="shine button bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto block overflow-hidden">
                             Выбрать квартиру
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-7.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-7.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-4xl shadow-lg flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
                     <div class="relative z-10 flex flex-col items-start h-full"> 
@@ -351,14 +382,14 @@
                         <h3 class="text-3xl mb-2">Апартаменты<br>
                             на 8–16 квартир</h3>
                         <p class="mt-6 text-base">Уютный масштаб, продуманные планировки с гардеробной и двумя санузлами. На первом этаже — отдельный вход и терраса, на третьем — двухуровневые варианты.</p>
-                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                        <button class="openModalBtn shine button bg-transparent border border-peach-btn text-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 hover:text-white cursor-pointer mt-auto">
                             Напомнить о старте продаж
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-8.webp')] bg-left-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-8.webp')] bg-left-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-4xl shadow-lg flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
                     <div class="relative z-10 flex flex-col items-start h-full"> 
@@ -369,14 +400,14 @@
                         <h3 class="text-3xl mb-2">Урбан-виллы<br>
                             на 4–6 квартир</h3>
                         <p class="mt-6 text-base">Компактные секции с собственным лобби, колясочной и атмосферой «своего дома». Формат для тех, кто ищет комфорт, тишину и порядок.</p>
-                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                        <button class="openModalBtn shine button bg-transparent border border-peach-btn text-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 hover:text-white cursor-pointer mt-auto">
                             Напомнить о старте продаж
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-33.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all flex flex-col text-white overflow-hidden">
+            <div class="relative h-full min-h-[600px] bg-[url('../../assets/img/Park-33.webp')] bg-right-bottom bg-cover bg-no-repeat p-6 md:p-12 rounded-4xl shadow-lg flex flex-col text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black/50 z-0"></div>
                 <div class="flex flex-col h-full relative z-10">
                     <div class="relative z-10 flex flex-col items-start h-full"> 
@@ -387,9 +418,9 @@
                         <h3 class="text-3xl mb-2">Квартиры<br>
                             и студии</h3>
                         <p class="mt-6 text-base">Классические и евро-планировки в многоквартирных корпусах. Разумные метражи и функциональные зоны. Хороший выбор на любом этапе жизни — от первой студии до семейной трёшки.</p>
-                        <a href="" class="bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto">
+                        <button class="openModalBtn shine button bg-transparent border border-peach-btn text-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 hover:text-white cursor-pointer mt-auto">
                             Напомнить о старте продаж
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -397,39 +428,36 @@
         </div>
     </div>
 
-
-    <div class="mt-24">
+    <div id="mortgage" class="section mt-24">
         <div class="grid grid-cols-1 md:grid-cols-6 gap-6 md:gap-24">
-            <div class="col-span-2 flex flex-col justify-center p-6 md:p-12">
-
-                    <div class="flex flex-col gap-8 items-start">
-                        <h3 class="text-5xl">Безопасная<br> покупка</h3>
-                        <p class="text-lg">Проект реализуется по 214-ФЗ. Все расчёты проходят через эскроу-счета — ваши деньги защищены до получения ключей</p>
-                        <a href="" class="block bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
-                            Персональный менеджер
-                        </a>
-                    </div>
-    
+            <div class="col-span-1 md:col-span-2 flex flex-col justify-center p-6 md:p-16">
+                <div class="flex flex-col gap-8 items-start">
+                    <h3 class="text-4xl md:text-5xl">Безопасная<br> покупка</h3>
+                    <p class="text-base md:text-lg">Проект реализуется по 214-ФЗ. Все расчёты проходят через эскроу-счета — ваши деньги защищены до получения ключей</p>
+                    <button class="openModalBtn shine button block bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+                        Персональный менеджер
+                    </button>
+                </div>
             </div>
-            <div class="col-span-4 grid grid-cols-2 gap-6">
-                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="col-span-1 md:col-span-4 md:grid grid-cols-1 md:grid-cols-2 gap-6    flex overflow-x-auto snap-mandatory no-scrollbar-x">
+                <div class="min-h-[288px] bg-white rounded-4xl p-8 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shrink-0 grow max-w-[300px] md:max-w-full">
                     <h4 class="text-3xl">Ипотека</h4>
                     <p>Ипотека от ведущих банков —
                         с индивидуальным подбором условий</p>
                     <img class="mt-auto" src="assets/img/landmark.svg" alt="">
                 </div>
-                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="min-h-[288px] bg-white rounded-4xl p-8 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shrink-0 grow max-w-[300px] md:max-w-full">
                     <h4 class="text-3xl">Трейд ИН</h4>
                     <p>Обменивайте свою старую недвижимость на новую — с выгодой
                         и без лишних хлопот</p>
                     <img class="mt-auto" src="assets/img/refresh-cw.svg" alt="">
                 </div>
-                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="min-h-[288px] bg-white rounded-4xl p-8 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shrink-0 grow max-w-[300px] md:max-w-full">
                     <h4 class="text-3xl">Рассрочка 0%</h4>
                     <p>Фиксированная цена и поэтапная оплата — без переплат и процентов</p>
                     <img class="mt-auto" src="assets/img/coins.svg" alt="">
                 </div>
-                <div class="min-h-[288px] bg-white rounded-3xl p-4 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="min-h-[288px] bg-white rounded-4xl p-8 flex flex-col items-baseline space-y-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     <h4 class="text-3xl">Материнский капитал</h4>
                     <p>Можно использовать маткапитал — полностью или как часть первого взноса</p>
                     <img class="mt-auto" src="assets/img/baby.svg" alt="">
@@ -438,11 +466,10 @@
         </div>
     </div>
 
-
-    <div class="mt-24">
+    <div class="section mt-24">
         <div class="grid grid-cols-1 md:grid-cols-6">
-            <div class="col-span-2 flex flex-col items-start">
-                <h2 class="text-5xl mb-8">Контактная<br> информация</h2>
+            <div class="col-span-2 flex flex-col items-start p-8 md:px-16">
+                <h2 class="text-4xl md:text-5xl mb-8">Контактная<br> информация</h2>
 
                 <address class="not-italic flex flex-col gap-2 mb-6">
                     <strong class="block text-2xl font-normal">Офис продаж</strong>
@@ -454,36 +481,38 @@
                 </address>
                 <address class="not-italic flex flex-col gap-2 mb-6">
                     <strong class="block text-2xl font-normal">Режим работы</strong>
-                    <span class="block text-xl font-thin">Понедельник – пятница: с 09:00 до 19:00</span>
-                    <span class="block text-xl font-thin">Суббота: с 10:00 до 15:00</span>
-                    <span class="block text-xl font-thin">Воскресенье: выходной</span>
-                    <span class="block text-xl font-thin">Перерыв: с 12:00 до 13:00</span>
+                    <div class="leading-none">
+                        <span class="block text-xl font-thin">Понедельник – пятница: с 09:00 до 19:00</span>
+                        <span class="block text-xl font-thin">Суббота: с 10:00 до 15:00</span>
+                        <span class="block text-xl font-thin">Воскресенье: выходной</span>
+                        <span class="block text-xl font-thin">Перерыв: с 12:00 до 13:00</span>
+                    </div>
                 </address>
-                <a href="" class="block bg-peach-btn px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
+                <button class="openModalBtn shine button block bg-peach-btn px-4 md:px-8 py-4 rounded-4xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer">
                     Обратный звонок
-                </a>
+                </button>
             </div>
             <div class="col-span-4">
                 <div class="overflow-hidden rounded-4xl">
-                    <div id="map" class="w-full h-[500px]"></div>
+                    <div id="map" class="w-full h-[600px]"></div>
                 </div>
             </div>
         </div>
     </div>
       
 <footer>
-    <div class="grid grid-cols-1 md:grid-cols-4 bg-white gap-6 p-6 md:12 rounded-4xl mt-20">
+    <div class="grid grid-cols-1 md:grid-cols-4 bg-white gap-6 p-6 md:p-16 rounded-4xl mt-20">
         <div class="col-span-1">
             <h5 class="text-xl mb-6">Юридическая информация</h5>
             <div class="text-sm font-thin leading-6">
                 <span class="block">ООО СЗ «Ремстройсервис Романово»</span>
                 <span class="block">ИНН / ОГРН: 4826145230 / 1204800009853</span>
                 <span class="block">398016, г. Липецк, ул. Космонавтов, д. 26/1</span>
-                <a href="" class="text-[#DA966E] block font-thin">Политика конфиденциальности</a>
-                <a href="" class="text-[#DA966E] block font-thin">Согласие пользователя</a>
+                <a href="" class="button text-[#DA966E] block font-thin">Политика конфиденциальности</a>
+                <a href="" class="button text-[#DA966E] block font-thin">Согласие пользователя</a>
             </div>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-1 md:col-span-2">
             <h5 class="text-xl mb-6">Информация по объектам</h5>
             <div class="text-sm font-thin leading-6">
                 <p>Проектные декларации, разрешительная документаци и ход строительства размещены на сайте www.наш.дом.рф</p>
@@ -494,22 +523,22 @@
         <div class="col-span-1">
             <h5 class="text-xl mb-6">Мы в соцсетях</h5>
             <ul class="flex gap-8 items-center mb-10">
-                <li><a href="">
+                <li><a href="" class="cursor-pointer transition-all duration-300 transform hover:-translate-y-1 block">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                         <path d="M28.5 4.5H7.5C5.8425 4.5 4.5 5.8425 4.5 7.5V28.5C4.5 30.1575 5.8425 31.5 7.5 31.5H28.5C30.1575 31.5 31.5 30.1575 31.5 28.5V7.5C31.5 5.8425 30.1575 4.5 28.5 4.5ZM26.8605 23.526L24.258 23.562C24.258 23.562 23.697 23.6715 22.962 23.1645C21.9885 22.4955 21.0705 20.7555 20.355 20.982C19.629 21.213 19.6515 22.779 19.6515 22.779C19.6515 22.779 19.6575 23.055 19.491 23.235C19.311 23.4285 18.9585 23.409 18.9585 23.409H17.793C17.793 23.409 15.222 23.622 12.9555 21.2595C10.4865 18.684 8.3055 13.6005 8.3055 13.6005C8.3055 13.6005 8.178 13.2795 8.3145 13.116C8.469 12.9345 8.886 12.93 8.886 12.93L11.6715 12.9165C11.6715 12.9165 11.934 12.963 12.123 13.101C12.2775 13.215 12.366 13.4295 12.366 13.4295C12.366 13.4295 12.816 14.571 13.413 15.6045C14.577 17.619 15.1185 18.06 15.513 17.844C16.089 17.529 15.9165 14.997 15.9165 14.997C15.9165 14.997 15.927 14.0775 15.627 13.668C15.393 13.3485 14.9535 13.254 14.76 13.23C14.6025 13.209 14.859 12.8445 15.1935 12.6795C15.6945 12.435 16.581 12.42 17.6265 12.4305C18.441 12.4395 18.6765 12.489 18.9945 12.567C19.956 12.7995 19.629 13.6965 19.629 15.849C19.629 16.539 19.5045 17.508 20.001 17.8275C20.2155 17.9655 20.7375 17.8485 22.041 15.6285C22.6605 14.5755 23.124 13.338 23.124 13.338C23.124 13.338 23.226 13.1175 23.3835 13.023C23.5455 12.9255 23.763 12.9555 23.763 12.9555L26.6955 12.9375C26.6955 12.9375 27.576 12.831 27.72 13.2315C27.87 13.65 27.3915 14.6265 26.193 16.224C24.2265 18.849 24.0075 18.6045 25.641 20.1225C27.201 21.573 27.5235 22.278 27.5775 22.3665C28.2225 23.4405 26.8605 23.526 26.8605 23.526Z" fill="#233232"/>
                       </svg>
                 </a></li>
-                <li><a href="">
+                <li><a href="" class="cursor-pointer transition-all duration-300 transform hover:-translate-y-1 block">
                     <svg xmlns="http://www.w3.org/2000/svg" width="37" height="36" viewBox="0 0 37 36" fill="none">
                         <path d="M32.0408 4.80687L4.00017 15.8228C2.87177 16.3358 2.49011 17.3631 3.72743 17.9207L10.9211 20.2496L28.3143 9.29859C29.264 8.61111 30.2364 8.79444 29.3997 9.55071L14.4612 23.3301L13.9919 29.1615C14.4266 30.062 15.2224 30.0662 15.73 29.6186L19.863 25.6346L26.9413 31.0344C28.5853 32.0259 29.4799 31.386 29.8337 29.5687L34.4764 7.17243C34.9585 4.93544 34.1363 3.94979 32.0408 4.80687Z" fill="#233232"/>
                       </svg>
                 </a></li>
-                <li><a href="">
+                <li><a href="" class="cursor-pointer transition-all duration-300 transform hover:-translate-y-1 block">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                         <path d="M20.6036 20.6036C18.4821 22.7925 18.3279 25.5214 18.1446 31.5C23.7182 31.5 27.5657 31.4807 29.5521 29.5521C31.4807 27.5657 31.5 23.535 31.5 18.1446C25.5214 18.3375 22.7925 18.4821 20.6036 20.6036ZM4.5 18.1446C4.5 23.535 4.51929 27.5657 6.44786 29.5521C8.43429 31.4807 12.2818 31.5 17.8554 31.5C17.6625 25.5214 17.5179 22.7925 15.3964 20.6036C13.2075 18.4821 10.4786 18.3279 4.5 18.1446ZM17.8554 4.5C12.2914 4.5 8.43429 4.51929 6.44786 6.44786C4.51929 8.43429 4.5 12.465 4.5 17.8554C10.4786 17.6625 13.2075 17.5179 15.3964 15.3964C17.5179 13.2075 17.6721 10.4786 17.8554 4.5ZM20.6036 15.3964C18.4821 13.2075 18.3279 10.4786 18.1446 4.5C23.7182 4.5 27.5657 4.51929 29.5521 6.44786C31.4807 8.43429 31.5 12.465 31.5 17.8554C25.5214 17.6625 22.7925 17.5179 20.6036 15.3964Z" fill="#233232"/>
                       </svg>
                 </a></li>
-                <li><a href="">
+                <li><a href="" class="cursor-pointer transition-all duration-300 transform hover:-translate-y-1 block">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                         <path d="M32.373 9.279C32.028 7.989 31.011 6.972 29.721 6.627C27.381 6 18 6 18 6C18 6 8.619 6 6.279 6.627C4.989 6.972 3.972 7.989 3.627 9.279C3 11.619 3 18 3 18C3 18 3 24.381 3.627 26.721C3.972 28.011 4.989 29.028 6.279 29.373C8.619 30 18 30 18 30C18 30 27.381 30 29.721 29.373C31.0125 29.028 32.028 28.011 32.373 26.721C33 24.381 33 18 33 18C33 18 33 11.619 32.373 9.279ZM15 23.196V12.804L24 18L15 23.196Z" fill="#233232"/>
                       </svg>
@@ -522,225 +551,119 @@
 </footer>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Features Section -->
-    <!-- <section class="py-20 bg-navy text-white">
-        <div class="">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Комфортная среда</h2>
-                <p class="text-lg opacity-90 max-w-2xl mx-auto">
-                    Каждый день приносит новые возможности для отдыха и развития.
-                </p>
+    <dialog id="apartmentModal" class="rounded-4xl">
+        <div class="modal-content bg-white max-w-3xl p-8 pt-4">
+            <!-- Заголовок модального окна -->
+            <div class="flex items-center justify-between p-6 md:12 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-800">Свяжитесь с нами</h2>
+                    <button id="closeModalBtn" type="button" class="text-gray-500 hover:text-gray-700 text-3xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="acvb"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></svg>
+                    </button>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-8 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm hover:bg-opacity-20 transition-all">
-                    <div class="w-20 h-20 bg-peach rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-5-10V3a1 1 0 011-1h4a1 1 0 011 1v2M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Консьерж-сервис</h3>
-                    <p class="opacity-90">Профессиональная поддержка жильцов 24/7</p>
-                </div>
-                
-                <div class="text-center p-8 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm hover:bg-opacity-20 transition-all">
-                    <div class="w-20 h-20 bg-peach rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Фитнес-центр</h3>
-                    <p class="opacity-90">Современный спортзал с профессиональным оборудованием</p>
-                </div>
-                
-                <div class="text-center p-8 bg-white bg-opacity-10 rounded-2xl backdrop-blur-sm hover:bg-opacity-20 transition-all">
-                    <div class="w-20 h-20 bg-peach rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Детские площадки</h3>
-                    <p class="opacity-90">Безопасные зоны для игр и развития детей</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Contact Section -->
-    <!-- <div id="contact" class="py-20 bg-gradient-to-br from-warm-gray via-peach to-white">
-        <div class="">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6">Безопасная покупка</h2>
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-8 bg-sage rounded-full flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-700">Аккредитованный застройщик</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-8 bg-sage rounded-full flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-700">Страхование сделки</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-8 bg-sage rounded-full flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-700">Гарантия качества</span>
-                        </div>
+            <!-- Форма обратной связи -->
+            <form id="contactForm" class="p-6">
+                <div class="space-y-6">
+                    <p class="text-gray-600 mb-6">
+                        Оставьте свои контактные данные, и наш менеджер свяжется с вами в ближайшее время для консультации по выбору квартиры.
+                    </p>
+                    
+                    <!-- Поле Имя -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                            Имя *
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg valid:border-green-500 focus:border-peach-btn"
+                            placeholder="Введите ваше имя"
+                        >
                     </div>
                     
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <h3 class="text-xl font-bold mb-4">Контактная информация</h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                </svg>
-                                <span class="text-gray-700">+7 (xxx) xxx-xx-xx</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                                <span class="text-gray-700">info@storypark.ru</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                                <span class="text-gray-700">г. Липецк, ул. Примерная, 1</span>
-                            </div>
-                        </div>
+                    <!-- Поле Телефон -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                            Телефон *
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors"
+                            placeholder="+7 (___) ___-__-__"
+                        >
                     </div>
-                </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-2xl">
-                    <h3 class="text-2xl font-bold mb-6">Получить консультацию</h3>
-                    <form class="space-y-4" id="contact-form">
-                        <div>
-                            <input type="text" placeholder="Ваше имя" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-all">
-                        </div>
-                        <div>
-                            <input type="tel" placeholder="Телефон" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-all">
-                        </div>
-                        <div>
-                            <input type="email" placeholder="Email" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-all">
-                        </div>
-                        <div>
-                            <textarea placeholder="Сообщение" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-all resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-sage text-white py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105">
+                    
+                    <!-- Поле Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            Email
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-peach-btn focus:border-transparent transition-colors"
+                            placeholder="your@email.com"
+                        >
+                    </div>
+                    
+                    <!-- Поле Комментарий -->
+                    <div>
+                        <label for="comment" class="block text-sm font-medium text-gray-700 mb-2">
+                            Комментарий
+                        </label>
+                        <textarea 
+                            id="comment" 
+                            name="comment"
+                            rows="3"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-peach-btn focus:border-transparent transition-colors resize-none"
+                            placeholder="Укажите ваши пожелания по квартире (количество комнат, площадь, этаж и т.д.)"
+                        ></textarea>
+                    </div>
+                    
+                    <!-- Согласие на обработку данных -->
+                    <div class="flex items-center space-x-3">
+                        <input 
+                            type="checkbox" 
+                            id="agreement" 
+                            name="agreement" 
+                            required
+                            class="h-4 w-4 text-peach-btn focus:ring-peach-btn border-gray-300 rounded"
+                        >
+                        <label for="agreement" class="text-sm text-gray-600 font-thin">
+                            Я согласен на обработку персональных данных и получение информационных сообщений
+                        </label>
+                    </div>
+                    
+                    <!-- Кнопка отправки -->
+                    <button type="submit" class="shine bg-peach-btn px-4 md:px-8 py-4 rounded-3xl text-sm uppercase hover:bg-opacity-90 transition-all hover:bg-peach-btn/70 cursor-pointer mt-auto block overflow-hidden">
                             Отправить заявку
-                        </button>
-                    </form>
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
-    </div> -->
+    </dialog>
 
-    <!-- Footer -->
-    <!-- <footer class="bg-navy text-white py-12">
-        <div class="">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-2xl font-bold mb-4">Story Park</div>
-                    <p class="text-gray-300 mb-4">Современный жилой комплекс для комфортной жизни в городе.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-sage rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-sage rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">О проекте</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">Концепция</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Архитектура</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Инфраструктура</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Новости</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Квартиры</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">Студии</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">1-комнатные</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">2-комнатные</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">3-комнатные</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Контакты</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>+7 (xxx) xxx-xx-xx</li>
-                        <li>info@storypark.ru</li>
-                        <li>г. Липецк, ул. Примерная, 1</li>
-                        <li>Пн-Пт: 9:00-20:00</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2024 Story Park. Все права защищены.</p>
+
+
+
+
+
+    <div id="markerModal" class="invisible opacity-0 fixed inset-0 z-50 flex items-end justify-center">
+        <div id="markerModalBackdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+        <div id="markerModalContainer" class="relative bg-white p-8 rounded-t-4xl w-full 2xl:max-w-[1920px] 2xl:mx-auto translate-y-full opacity-0 transition-all duration-300">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Поликлиника</h2>
             </div>
         </div>
-    </footer> -->
+    </div>
+
+
 </div>
     <script src="assets/js/script.js"></script>
 </body>
